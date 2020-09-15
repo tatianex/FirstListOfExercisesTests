@@ -132,5 +132,17 @@ namespace entra21_tests
             return totalValueSpent;
         }
     
+        public bool Exercise8(int number1, int number2)
+        {
+            try
+            {
+                if (number1 % number2 == 0) return true;
+                else return false;
+            }
+            catch
+            {
+                return false;
+            }           
+        }
     }
 }
