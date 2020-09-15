@@ -144,5 +144,11 @@ namespace entra21_tests
                 return false;
             }           
         }
+
+        public bool Exercise9(double number1, double number2, double number3)
+        {
+           if (number1 > (number2 + number3)) return true;
+           else return false;
+        }
     }
 }

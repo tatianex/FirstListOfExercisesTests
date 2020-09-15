@@ -191,11 +191,26 @@ namespace entra21_tests
         [InlineData(50, 5, true)]
         [InlineData(5, 50, false)]
         [InlineData(0, 0, false)]
-        public void should_return_first_number_is_multiple_of_the_second(int number1, int number2, bool expected){
+        public void should_return_if_first_number_is_multiple_of_the_second(int number1, int number2, bool expected){
 
             var exercises = new Exercises();
 
             var result = exercises.Exercise8(number1, number2);
+
+            Assert.Equal(expected, result);
+        }
+    
+        [Theory]
+        [InlineData(309, 201, 45, true)]
+        [InlineData(507, 195, 75.5, true)]
+        [InlineData(57, 205, 95.2, false)]
+        [InlineData(-107, 25, -80, false)]
+        [InlineData(-20, -58, -8, true)]
+        public void should_return_if_first_number_is_bigger_than_the_last_two(double number1, double number2, double number3, bool expected)
+        {
+            var exercises = new Exercises();
+
+            var result = exercises.Exercise9(number1, number2, number3);
 
             Assert.Equal(expected, result);
         }
