@@ -120,5 +120,17 @@ namespace entra21_tests
             percentageOfWomemBetween18And35 = ((groupOfWomemBetween18And35 * 100) / 5);
             return percentageOfWomemBetween18And35;
         }
+
+        public double Exercise7(int yearsSmoking, int cigarettes, double cigarettesPrice)
+        {
+            int totalCigarettesInBox = 20;
+            var totalDaysSmoking = yearsSmoking * 365;
+            var totalCigarrettesSmoked = cigarettes * totalDaysSmoking;
+            double totalBoxesSmoked = totalCigarrettesSmoked / totalCigarettesInBox;
+            double totalValueSpent = totalBoxesSmoked * cigarettesPrice;
+
+            return totalValueSpent;
+        }
+    
     }
 }

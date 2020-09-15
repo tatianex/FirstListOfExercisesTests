@@ -171,5 +171,18 @@ namespace entra21_tests
             // Deve / Asserções
             Assert.Equal(expected, result);
         }
+    
+        [Theory]
+        [InlineData(3, 5, 5.5, 1501.5)]
+        [InlineData(12, 3, 7.5, 4927.5)]
+        [InlineData(25, 7, 6.5, 20754.5)]
+        public void should_return_value_spent_in_cigarettes_over_years(int yearsSmoking, int cigarettes, double cigarettesPrice, double expected){
+
+            var exercises = new Exercises();
+
+            double result = exercises.Exercise7(yearsSmoking, cigarettes, cigarettesPrice);
+
+            Assert.Equal(expected, result);
+        }
     }
 }
