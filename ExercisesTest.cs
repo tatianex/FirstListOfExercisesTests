@@ -303,5 +303,20 @@ namespace entra21_tests
 
             Assert.Equal(expected, result);
         }
+    
+        [Theory]
+        [InlineData(598.90, 598.90)]
+        [InlineData(1150, 920)]
+        [InlineData(1737.55, 1303.16)]
+        [InlineData(2495.40, 1746.78)]
+        [InlineData(5659.88, 3961.92)]
+        public void should_return_salary_with_the_right_discount(double salary, double expected)
+        {
+            var exercises = new Exercises();
+
+            var result = exercises.Exercise16(salary);
+
+            Assert.Equal(expected, result);
+        }  
     }
 }

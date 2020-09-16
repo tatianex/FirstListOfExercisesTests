@@ -241,5 +241,17 @@ namespace entra21_tests
 
             return result;
         }
+    
+        public double Exercise16(double salary)
+        {
+            double salaryWithDiscount1 = (salary - ((salary * 20) / 100));
+            double salaryWithDiscount2 = (salary - ((salary * 25) / 100));
+            double salaryWithDiscount3 = (salary - ((salary * 30) / 100));
+
+            if (salary <= 600) return Math.Round(salary, 2);
+            else if (salary <= 1200) return Math.Round(salaryWithDiscount1, 2);
+            else if (salary <= 2000) return Math.Round(salaryWithDiscount2, 2);
+            else return Math.Round(salaryWithDiscount3, 2);
+        }
     }
 }
