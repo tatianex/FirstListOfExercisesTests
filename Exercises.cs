@@ -253,5 +253,17 @@ namespace entra21_tests
             else if (salary <= 2000) return Math.Round(salaryWithDiscount2, 2);
             else return Math.Round(salaryWithDiscount3, 2);
         }
+    
+        public int[] Exercise17(int number)
+        {
+            var multiplicationTable = new int[10];
+
+            for (int i = 1; i < 11; i++)
+            {
+                multiplicationTable[i - 1] = number * i;
+            }
+
+            return multiplicationTable;
+        }
     }
 }

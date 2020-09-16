@@ -318,5 +318,17 @@ namespace entra21_tests
 
             Assert.Equal(expected, result);
         }  
+    
+        [Theory]
+        [InlineData(5, new int[10]{5, 10, 15, 20, 25, 30, 35, 40, 45, 50})]
+        [InlineData(8, new int[10]{8, 16, 24, 32, 40, 48, 56, 64, 72, 80})]
+        public void should_return_the_multiplication_table_for_the_informed_number(int number, int[] expected)
+        {
+            var exercises = new Exercises();
+
+            var result = exercises.Exercise17(number);
+
+            Assert.Equal(expected, result);
+        }
     }
 }
