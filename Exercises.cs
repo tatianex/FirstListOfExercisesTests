@@ -192,5 +192,17 @@ namespace entra21_tests
 
             return result;
         }
+    
+        public int Exercise13(int[] numbers)
+        {
+            int biggestNumber = int.MinValue;
+
+            foreach (int number in numbers)
+            {
+                if (number > biggestNumber) biggestNumber = number;
+            }
+
+            return biggestNumber;
+        }
     }
 }

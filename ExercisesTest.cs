@@ -255,8 +255,22 @@ namespace entra21_tests
             var exercises = new Exercises();
 
             var result = exercises.Exercise12(numbers);
-            
+
             (int, int) expected = (resultSumEven, resultSumOdd);
+
+            Assert.Equal(expected, result);
+        }
+    
+        [Theory]
+        [InlineData(new int[10]{24, 17, 78, 93, -5, -107, 50, 42, 1, 204}, 204)]
+        [InlineData(new int[10]{4, 308, 49, 10, 85, 68, -99, 12, -20, -19}, 308)]
+        [InlineData(new int[10]{39, -150, 15, -2, 509, 33, 511, 289, -47, 81}, 511)]
+        [InlineData(new int[10]{-15, -34, -98, -27, -11, -73, -11, -6, -63, -52}, -6)]
+        public void should_return_the_biggest_number(int[] numbers, int expected)
+        {
+            var exercises = new Exercises();
+
+            var result = exercises.Exercise13(numbers);
 
             Assert.Equal(expected, result);
         }
