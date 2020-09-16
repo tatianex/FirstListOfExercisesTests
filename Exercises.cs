@@ -161,5 +161,23 @@ namespace entra21_tests
             else if (number1 > number2) return aBigger;
             else return bBigger;
         }
+    
+        public double Exercise11(int number1, int number2)
+        {
+            double result = 0.0d;
+
+            try
+            {
+                if (number2 != 0)
+                {
+                    return result = (Convert.ToDouble(number1) / Convert.ToDouble(number2));
+                }
+                else return 0; 
+            }
+            catch
+            {
+                return 0;
+            }
+        }
     }
 }

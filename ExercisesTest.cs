@@ -229,6 +229,21 @@ namespace entra21_tests
             var result = exercises.Exercise10(number1, number2);
 
             Assert.Equal(expected, result);
+        }
+
+        [Theory]
+        [InlineData(25, 5, 5)]
+        [InlineData(1800, 3, 600)]
+        [InlineData(99, 0, 0)]
+        [InlineData(3, 27, 0.1111111111111111)]
+        [InlineData(13, 2, 6.5)]
+        public void should_return_the_value_of_division(int number1, int number2, double expected)
+        {
+            var exercises = new Exercises();
+
+            double result = exercises.Exercise11(number1, number2);
+
+            Assert.Equal(expected, result);
         }    
     }
 }
