@@ -214,16 +214,30 @@ namespace entra21_tests
     
         public (int, int) Exercise15(int[] numbers)
         {
-            List<int> multipleOf3 = new List<int>();
-            List<int> multipleOf5 = new List<int>();
+            // CÓDIGO ORIGINAL USANDO LISTA APENAS PARA PRATICAR
+            /*
+            var multipleOf3 = new List<int>();
+            var multipleOf5 = new List<int>();
 
-            foreach (int number in numbers)
+             foreach (int number in numbers)
             {
                 if (number % 3 == 0) multipleOf3.Add(number);
                 if (number % 5 == 0) multipleOf5.Add(number);
             }
-
+            
             var result = (multipleOf3.Count, multipleOf5.Count);
+            */
+
+            var totalMultipleOf3 = 0;
+            var totalMultipleOf5 = 0;
+
+            foreach (int number in numbers)
+            {
+                if (number % 3 == 0) totalMultipleOf3++;
+                if (number % 5 == 0) totalMultipleOf5++;
+            }
+            
+            var result = (totalMultipleOf3, totalMultipleOf5);
 
             return result;
         }
