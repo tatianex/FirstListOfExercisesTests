@@ -211,5 +211,21 @@ namespace entra21_tests
 
             return numbers;
         }
+    
+        public (int, int) Exercise15(int[] numbers)
+        {
+            List<int> multipleOf3 = new List<int>();
+            List<int> multipleOf5 = new List<int>();
+
+            foreach (int number in numbers)
+            {
+                if (number % 3 == 0) multipleOf3.Add(number);
+                if (number % 5 == 0) multipleOf5.Add(number);
+            }
+
+            var result = (multipleOf3.Count, multipleOf5.Count);
+
+            return result;
+        }
     }
 }

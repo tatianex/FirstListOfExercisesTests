@@ -287,5 +287,21 @@ namespace entra21_tests
 
             Assert.Equal(expected, result);
         }
+    
+        [Theory]
+        [InlineData(new int[10]{8, 12, 20, 17, -55, 72, 63, 115, -20, -9}, 4, 4)]
+        [InlineData(new int[10]{-3, -33, 0, -24, -81, -102, -500, -15, -99, -18}, 9, 3)]
+        [InlineData(new int[10]{-30, -35, -65, -70, -205, -1000, -90, -5, -35, -10}, 2, 10)]
+        [InlineData(new int[10]{8, 4, 19, 182, -551, 71, -14, -11, 22, 7}, 0, 0)]
+        public void should_return_multiple_of_five_and_three(int[] numbers, int multipleOf3, int multipleOf5)
+        {
+            var exercises = new Exercises();
+
+            var result = exercises.Exercise15(numbers);
+
+            var expected = (multipleOf3, multipleOf5);
+
+            Assert.Equal(expected, result);
+        }
     }
 }
