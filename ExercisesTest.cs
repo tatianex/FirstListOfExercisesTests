@@ -214,5 +214,21 @@ namespace entra21_tests
 
             Assert.Equal(expected, result);
         }
+    
+        [Theory]
+        [InlineData(25, 11, 1)]
+        [InlineData(507, 195, 1)]
+        [InlineData(-90, 34, 2)]
+        [InlineData(-105, -80, 2)]
+        [InlineData(-45, -77, 1)]
+        [InlineData(-45, -45, 0)]
+        public void should_return_number_are_equal_or_one_is_bigger(int number1, int number2, int expected)
+        {
+            var exercises = new Exercises();
+
+            var result = exercises.Exercise10(number1, number2);
+
+            Assert.Equal(expected, result);
+        }    
     }
 }

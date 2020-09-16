@@ -150,5 +150,16 @@ namespace entra21_tests
            if (number1 > (number2 + number3)) return true;
            else return false;
         }
+
+        public int Exercise10(int number1, int number2)
+        {
+            const int areEqual = 0;
+            const int aBigger = 1;
+            const int bBigger = 2;
+
+            if (number1 == number2) return areEqual;
+            else if (number1 > number2) return aBigger;
+            else return bBigger;
+        }
     }
 }
