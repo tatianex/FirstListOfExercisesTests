@@ -245,5 +245,20 @@ namespace entra21_tests
 
             Assert.Equal(expected, result);
         }    
+    
+        [Theory]
+        [InlineData(new int[4]{25, 5, 14, 8}, 22, 30)]
+        [InlineData(new int[4]{-3, -7, -22, -10}, -32, -10)]
+        [InlineData(new int[4]{13, 17, 12, 6}, 18, 30)]
+        public void should_return_sum_of_odds_and_even(int[] numbers, int resultSumEven, int resultSumOdd)
+        {
+            var exercises = new Exercises();
+
+            var result = exercises.Exercise12(numbers);
+            
+            (int, int) expected = (resultSumEven, resultSumOdd);
+
+            Assert.Equal(expected, result);
+        }
     }
 }

@@ -179,5 +179,18 @@ namespace entra21_tests
                 return 0;
             }
         }
+    
+        public (int, int) Exercise12(int[] numbers)
+        {
+            (int even, int odd) result = (0, 0);
+
+            foreach (int number in numbers)
+            {
+                if (number % 2 == 0) result.even += number;
+                else result.odd += number;
+            }
+
+            return result;
+        }
     }
 }
