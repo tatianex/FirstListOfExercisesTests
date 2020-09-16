@@ -204,5 +204,12 @@ namespace entra21_tests
 
             return biggestNumber;
         }
+    
+        public double[] Exercise14(double[] numbers)
+        {
+            Array.Sort(numbers);
+
+            return numbers;
+        }
     }
 }

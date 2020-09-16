@@ -274,5 +274,18 @@ namespace entra21_tests
 
             Assert.Equal(expected, result);
         }
+    
+        [Theory]
+        [InlineData(new double[3]{9.5, 8, 7.7}, new double[3]{7.7, 8, 9.5})]
+        [InlineData(new double[3]{8.2, 7, 6.5}, new double[3]{6.5, 7, 8.2})]
+        [InlineData(new double[3]{10, 7.8, 9}, new double[3]{7.8, 9, 10})]
+        public void should_return_numbers_in_order(double[] numbers, double[] expected)
+        {
+            var exercises = new Exercises();
+
+            var result = exercises.Exercise14(numbers);
+
+            Assert.Equal(expected, result);
+        }
     }
 }
