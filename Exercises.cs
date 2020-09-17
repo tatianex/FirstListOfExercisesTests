@@ -265,5 +265,21 @@ namespace entra21_tests
 
             return multiplicationTable;
         }
+    
+        public double Exercise18(int apples)
+        {
+            double applesPrice = 0.0d;
+
+            if (apples < 12)
+            {
+                applesPrice = apples * 1.30d;
+                return Math.Round(applesPrice, 2);
+            }
+            else
+            {
+                applesPrice = apples * 1.0d;
+                return Math.Round(applesPrice, 2);
+            }
+        }
     }
 }

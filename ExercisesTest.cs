@@ -330,5 +330,18 @@ namespace entra21_tests
 
             Assert.Equal(expected, result);
         }
+    
+        [Theory]
+        [InlineData(7, 9.10)]
+        [InlineData(15, 15)]
+        public void should_return_price_of_apples(int apples, double expected)
+        {
+            var exercises = new Exercises();
+
+            var result = exercises.Exercise18(apples);
+
+            Assert.Equal(expected, result);
+        }
+
     }
 }
