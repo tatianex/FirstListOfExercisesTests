@@ -331,6 +331,7 @@ namespace entra21_tests
             Assert.Equal(expected, result);
         }
     
+        // Versão do professor com Select
         [Theory]
         [InlineData(6, new int[10]{6, 12, 18, 24, 30, 36, 42, 48, 54, 60})]
         [InlineData(5, new int[10]{5, 10, 15, 20, 25, 30, 35, 40, 45, 50})]

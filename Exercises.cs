@@ -267,6 +267,7 @@ namespace entra21_tests
             return multiplicationTable;
         }
     
+        // Versão do Professor usando método Select
         public IEnumerable<int> Exercise17B(int number)
 		{
             // Imprimir a tabuada de qualquer número fornecido pelo usuário.
