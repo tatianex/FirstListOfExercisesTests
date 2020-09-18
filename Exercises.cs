@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace entra21_tests
 {
@@ -266,6 +267,18 @@ namespace entra21_tests
             return multiplicationTable;
         }
     
+        public IEnumerable<int> Exercise17B(int number)
+		{
+            // Imprimir a tabuada de qualquer número fornecido pelo usuário.
+            // DADO que a aplicação esteja pronta, QUANDO o usuário informar um número
+            // DEVE retornar a tabuada de 1 a 10
+
+            var multiplicationTable = new List<int>(){
+                1, 2, 3, 4, 5, 6, 7, 8, 9, 10
+            };
+
+            return multiplicationTable.Select(item => item * number);
+		}
         public double Exercise18(int apples)
         {
             double applesPrice = 0.0d;
