@@ -82,7 +82,7 @@ namespace entra21_tests
             election.Vote(fernandoId);
 
             // Deve / Asserções
-            var candidateFernando = election.Candidates.Find(x => x.id == fernandoId);
+            var candidateFernando = election.Candidates.Find(x => x.id == fernando.id);
             var candidateAna = election.Candidates.Find(x => x.id == anaId);
             Assert.Equal(2, candidateFernando.votes);
             Assert.Equal(0, candidateAna.votes);
@@ -136,6 +136,23 @@ namespace entra21_tests
             var candidateAna = winners.Find(x => x.id == anaId);
             Assert.Equal(1, candidateFernando.votes);
             Assert.Equal(1, candidateAna.votes);
+        }
+    
+        [Fact]
+        public void should_return_a_list_of_candidates_with_same_name()
+        {
+            var election = new Election();
+            (string name, string cpf) Ana1 = ("Ana", "765.859.452-46");
+            (string name, string cpf) Ana2 = ("Ana", "678.951.374-55");
+            (string name, string cpf) Ana3 = ("Ana", "597.841.198-35");
+            
+            var candidates = new List<(string name, string cpf) > {Ana1, Ana2, Ana3};
+            election.CreateCandidates(candidates, "Pa$$w0rd");
+
+            var IdFound = election.GetCandidateIdByCPF(Ana1.cpf);
+
+            Assert.Equal(election.Candidates[0].id, IdFound);
+             
         }
     }
 }

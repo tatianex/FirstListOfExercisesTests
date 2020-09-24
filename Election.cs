@@ -29,16 +29,10 @@ namespace entra21_tests
             var candidateFound = Candidates.Where(x => x.name == name);
             return candidateFound.Select(x => x.id).ToList();
         }
-        public List<string> GetCandidateIdByCPF(string cpf)
+        public Guid GetCandidateIdByCPF(string cpf)
         {
-            var candidateFound = Candidates.Where(x => x.cpf == cpf);
-            return candidateFound.Select(x => x.cpf).ToList();
+            return Candidates.Find(x => x.cpf == cpf).id;
         }
-        /* public List<string> GetCandidatesWithSameName(string name)
-        {
-            var candidatesFound = Candidates.Where(x => x.name == name);
-            return candidateFound.Select(x => x.name).ToList();
-        } */
         public void Vote(Guid id)
         {
             Candidates = Candidates.Select(candidate => {
