@@ -8,24 +8,19 @@ namespace entra21_tests
     {
         // Propriedade abaixo:
         // Sempre em PascalCase
-        public List<(Guid id, string name, int votes)> Candidates { get; set; }
-        
-        public bool CreateCandidates(List<string> candidateNames, string password)
+        public List<(Guid id, string name, string cpf, int votes)> Candidates { get; set; }
+        public bool CreateCandidates (List<(string name, string cpf)> candidate, string password)
         {
             if (password == "Pa$$w0rd")
             {
-                Candidates = candidateNames.Select(candidateName => {
-                    return (Guid.NewGuid(), candidateName, 0);
+                Candidates = candidate.Select(candidate => {
+                    return (Guid.NewGuid(), candidate.name, candidate.cpf, 0);
                 }).ToList();
 
                 return true;
             }
-            else
-            {
-                return false;
-            }
+            else return false;
         }
-
         // ToDo: Criar método que retorne um Guid que represente o candidato pesquisado por CPF
 
         // ToDo: Este método deve retornar a lista de candidatos que tem o mesmo nome informado
@@ -33,19 +28,21 @@ namespace entra21_tests
         {
             return Candidates.First(x => x.name == name).id;
         }
-
+        public Guid GetCandidateIdByCPF(string cpf)
+        {
+            return Candidates.First(x => x.cpf == cpf).id;
+        }
         public void Vote(Guid id)
         {
             Candidates = Candidates.Select(candidate => {
                 return candidate.id == id
-                    ? (candidate.id, candidate.name, candidate.votes + 1)
+                    ? (candidate.id, candidate.name, candidate.cpf, candidate.votes + 1)
                     : candidate;
             }).ToList();
         }
-
-        public List<(Guid id, string name, int votes)> GetWinners()
+        public List<(Guid id, string name, string cpf, int votes)> GetWinners()
         {
-            var winners = new List<(Guid id, string name, int votes)>{Candidates[0]};
+            var winners = new List<(Guid id, string name, string cpf, int votes)>{Candidates[0]};
 
             for (int i = 1; i < Candidates.Count; i++)
             {
