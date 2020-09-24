@@ -5,7 +5,7 @@ namespace entra21_tests
 {
     public class ElectionTest
     {
-        [Fact]
+        [Fact] // Test for incorrect password ok
         public void should_not_create_candidates_when_password_is_incorrect()
         {
             // Dado / Setup
@@ -20,7 +20,7 @@ namespace entra21_tests
             Assert.False(created);
         }
 
-        [Fact]
+        [Fact] // Test for correct password ok
         public void should_create_candidates_when_password_is_correct()
         {
             // Dado / Setup
@@ -43,7 +43,7 @@ namespace entra21_tests
             Assert.True(election.Candidates[0].name == candidate.name);
         }
 
-        [Fact]
+        [Fact] // Test for ids ok
         public void should_not_generate_same_id_for_both_candidates()
         {
             // Dado / Setup
@@ -63,7 +63,7 @@ namespace entra21_tests
             Assert.NotEqual(candidateAna, candidateJose);
         }
 
-        [Fact]
+        [Fact] // Test for vote NEED FIXES
         public void should_vote_twice_in_candidate_Fernando()
         {
             // Dado / Setup
@@ -88,7 +88,7 @@ namespace entra21_tests
             Assert.Equal(0, candidateAna.votes);
         }
 
-        [Fact]
+        [Fact] // Test for other votes NEED FIXES
         public void should_return_Ana_as_winner_when_only_Ana_receives_votes()
         {
             // Dado / Setup
@@ -112,7 +112,7 @@ namespace entra21_tests
             Assert.Equal(2, winners[0].votes);
         }
 
-        [Fact]
+        [Fact] // Test for draw NEED FIXES
         public void should_return_both_candidates_when_occurs_draw()
         {
             // Dado / Setup
@@ -138,7 +138,7 @@ namespace entra21_tests
             Assert.Equal(1, candidateAna.votes);
         }
     
-        [Fact]
+        [Fact] // Test for list ok
         public void should_return_a_list_of_candidates_with_same_name()
         {
             var election = new Election();
