@@ -63,7 +63,7 @@ namespace entra21_tests
             Assert.NotEqual(candidateAna, candidateJose);
         }
 
-        [Fact] // Test for vote NEED FIXES
+        [Fact] // Test for vote ok
         public void should_vote_twice_in_candidate_Fernando()
         {
             // Dado / Setup
@@ -73,8 +73,8 @@ namespace entra21_tests
             (string name, string cpf) Ana = ("Ana", "678.951.374-55");
             var candidates = new List<(string, string) > {Fernando, Ana};
             election.CreateCandidates(candidates, "Pa$$w0rd");
-            var fernandoId = election.GetCandidateIdByName(Fernando.cpf);
-            var anaId = election.GetCandidateIdByName(Ana.cpf);
+            var fernandoId = election.GetCandidateIdByName(Fernando.name)[0];
+            var anaId = election.GetCandidateIdByName(Ana.name)[0];
 
             // Quando / Ação
             // Estamos acessando o MÉTODO ShowMenu do OBJETO election
@@ -82,13 +82,13 @@ namespace entra21_tests
             election.Vote(fernandoId);
 
             // Deve / Asserções
-            var candidateFernando = election.Candidates.Find(x => x.id == fernando.id);
+            var candidateFernando = election.Candidates.Find(x => x.id == fernandoId);
             var candidateAna = election.Candidates.Find(x => x.id == anaId);
             Assert.Equal(2, candidateFernando.votes);
             Assert.Equal(0, candidateAna.votes);
         }
 
-        [Fact] // Test for other votes NEED FIXES
+        [Fact] // Test for other votes ok
         public void should_return_Ana_as_winner_when_only_Ana_receives_votes()
         {
             // Dado / Setup
@@ -98,7 +98,7 @@ namespace entra21_tests
             (string name, string cpf) Ana = ("Ana", "678.951.374-55");
             var candidates = new List<(string, string) > {Fernando, Ana};
             election.CreateCandidates(candidates, "Pa$$w0rd");
-            var anaId = election.GetCandidateIdByName(Ana.name);
+            var anaId = election.GetCandidateIdByName(Ana.name)[0];
             
             // Quando / Ação
             // Estamos acessando o MÉTODO ShowMenu do OBJETO election
@@ -112,7 +112,7 @@ namespace entra21_tests
             Assert.Equal(2, winners[0].votes);
         }
 
-        [Fact] // Test for draw NEED FIXES
+        [Fact] // Test for draw ok
         public void should_return_both_candidates_when_occurs_draw()
         {
             // Dado / Setup
@@ -122,8 +122,8 @@ namespace entra21_tests
             (string name, string cpf) Ana = ("Ana", "678.951.374-55");
             var candidates = new List<(string, string) > {Fernando, Ana};
             election.CreateCandidates(candidates, "Pa$$w0rd");
-            var fernandoId = election.GetCandidateIdByName(Fernando.name);
-            var anaId = election.GetCandidateIdByName(Ana.name);
+            var fernandoId = election.GetCandidateIdByName(Fernando.name)[0];
+            var anaId = election.GetCandidateIdByName(Ana.name)[0];
             
             // Quando / Ação
             // Estamos acessando o MÉTODO ShowMenu do OBJETO election
