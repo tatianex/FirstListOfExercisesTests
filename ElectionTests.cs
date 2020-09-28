@@ -138,7 +138,7 @@ namespace entra21_tests
             Assert.Equal(1, candidateAna.votes);
         }
     
-        [Fact] // Test for list ok
+        [Fact] // Test for cpf search ok
         public void should_return_a_list_of_candidates_with_same_name()
         {
             var election = new Election();

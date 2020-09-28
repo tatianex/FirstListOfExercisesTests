@@ -8,7 +8,7 @@ namespace entra21_tests
     {
         // Propriedade abaixo:
         // Sempre em PascalCase
-        public List<(Guid id, string name, string cpf, int votes)> Candidates { get; set; }
+        public List<(Guid id, string name, string cpf, int votes)> Candidates { get; private set; }
         public bool CreateCandidates (List<(string name, string cpf)> candidate, string password)
         {
             if (password == "Pa$$w0rd")
@@ -21,7 +21,6 @@ namespace entra21_tests
             }
             else return false;
         }
-        // ToDo: Criar método que retorne um Guid que represente o candidato pesquisado por CPF
 
         // ToDo: Este método deve retornar a lista de candidatos que tem o mesmo nome informado
         public List<Guid> GetCandidateIdByName(string name)
@@ -29,6 +28,7 @@ namespace entra21_tests
             var candidateFound = Candidates.Where(x => x.name == name);
             return candidateFound.Select(x => x.id).ToList();
         }
+        // ToDo: Criar método que retorne um Guid que represente o candidato pesquisado por CPF
         public Guid GetCandidateIdByCPF(string cpf)
         {
             return Candidates.Find(x => x.cpf == cpf).id;
