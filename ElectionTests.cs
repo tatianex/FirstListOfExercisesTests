@@ -139,9 +139,10 @@ namespace entra21_tests
         }
     
         [Fact] // Test for cpf search ok
-        public void should_return_a_list_of_candidates_with_same_name()
+        public void should_return_the_id_of_candidate_when_researched_by_cpf()
         {
             var election = new Election();
+
             (string name, string cpf) Ana1 = ("Ana", "765.859.452-46");
             (string name, string cpf) Ana2 = ("Ana", "678.951.374-55");
             (string name, string cpf) Ana3 = ("Ana", "597.841.198-35");
@@ -153,6 +154,29 @@ namespace entra21_tests
 
             Assert.Equal(election.Candidates[0].id, IdFound);
              
+        }
+
+        [Fact] // Test for list of people with same name
+        public void should_return_a_list_of_candidates_with_same_name()
+        {
+            var election = new Election();
+
+            (string name, string cpf) Ana1 = ("Ana", "765.859.452-46");
+            (string name, string cpf) Thiago = ("Thiago", "764.859.451-45");
+            (string name, string cpf) Ana2 = ("Ana", "678.951.374-55");
+            (string name, string cpf) Paula = ("Paula", "731.859.452-43");
+            (string name, string cpf) Ana3 = ("Ana", "597.841.198-35");
+            (string name, string cpf) Jose = ("Maria", "577.842.198-25");
+            
+            var candidates = new List<(string name, string cpf) > {Ana1, Ana2, Ana3, Thiago, Paula, Jose};
+            election.CreateCandidates(candidates, "Pa$$w0rd");
+
+            var namesFound = election.GetCandidatesByName("Ana");
+
+            for (int i = 0; i < election.Candidates.Count; i++)
+            {
+                Assert.Equal("Ana", namesFound[i].name);
+            }                       
         }
     }
 }

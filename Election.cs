@@ -28,6 +28,11 @@ namespace entra21_tests
             var candidateFound = Candidates.Where(x => x.name == name);
             return candidateFound.Select(x => x.id).ToList();
         }
+        public List<(Guid id, string name, string cpf, int votes)> GetCandidatesByName(string name)
+        {
+            var candidatesFound = Candidates.Where(x => x.name == name);
+            return candidatesFound.ToList();
+        }
         // ToDo: Criar método que retorne um Guid que represente o candidato pesquisado por CPF
         public Guid GetCandidateIdByCPF(string cpf)
         {
