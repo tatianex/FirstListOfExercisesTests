@@ -173,7 +173,7 @@ namespace entra21_tests
 
             var namesFound = election.GetCandidatesByName("Ana");
 
-            for (int i = 0; i < election.Candidates.Count; i++)
+            for (int i = 0; i < namesFound.Count; i++)
             {
                 Assert.Equal("Ana", namesFound[i].name);
             }                       
