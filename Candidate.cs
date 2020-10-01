@@ -18,5 +18,10 @@ namespace entra21_tests
             Votes = 0;
         }
 
+        public void Vote()
+        {
+            Votes++;
+        }
+
     }
 }

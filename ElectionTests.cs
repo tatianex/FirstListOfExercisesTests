@@ -10,7 +10,7 @@ namespace entra21_tests
         {
             // Dado / Setup
             var election = new Election();
-            var candidates = new List<(string, string) > {("José", "879.458.217-53")};
+            var candidates = new Candidate("José", "879.458.217-53");
 
             // Quando / Ação
             var created = election.CreateCandidates(candidates, "incorrect");

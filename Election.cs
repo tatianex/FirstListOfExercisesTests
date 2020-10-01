@@ -8,59 +8,50 @@ namespace entra21_tests
     {
         // Esta propriedade tem a sua escrita privada, ou seja, ninguém de fora da classe pode alterar seu valor
         // Propriedade privada SEMPRE em camelcase
-        private List<Candidate> candidates { get; set; }
+        private List<Candidate> _candidates { get; set; }
 
         // Propriedade pública SEMPRE em PascalCase
         // Propriedade apenas com GET pode ser usada com arrow
-        public IReadOnlyCollection<Candidate> Candidates => candidates;
-        public bool CreateCandidates (List<Candidate> candidate, string password)
+        public IReadOnlyCollection<Candidate> Candidates => _candidates;
+        public bool CreateCandidates (List<Candidate> candidates, string password)
         {
             if (password == "Pa$$w0rd")
             {
-                candidates = candidate;
-
+                _candidates = candidates;
                 return true;
             }
-            else return false;
+            return false;
         }
 
         // ToDo: Este método deve retornar a lista de candidatos que tem o mesmo nome informado
-        public List<Guid> GetCandidateIdByName(string name)
+        public Guid GetCandidateIdByName(string name)
         {
-            return candidates.Where(x => x.name == name).id;
+            return _candidates.First(x => x.Name == name).Id;
         }
-        public List<(Guid id, string name, string cpf, int votes)> GetCandidatesByName(string name)
+        public List<Candidate> GetCandidatesByName(string name)
         {
-            var candidatesFound = candidates.Where(x => x.name == name);
-            return candidatesFound.ToList();
+           return _candidates.Where(candidate => candidate.Name == name).ToList();
         }
         // ToDo: Criar método que retorne um Guid que represente o candidato pesquisado por CPF
         public Guid GetCandidateIdByCPF(string cpf)
         {
-            return candidates.Find(x => x.cpf == cpf).id;
+            return _candidates.Find(x => x.Cpf == cpf).Id;
         }
-        public void Vote(Guid id)
+        
+        public List<Candidate> GetWinners()
         {
-            candidates = candidates.Select(candidate => {
-                return candidate.id == id
-                    ? (candidate.id, candidate.name, candidate.cpf, candidate.votes + 1)
-                    : candidate;
-            }).ToList();
-        }
-        public List<(Guid id, string name, string cpf, int votes)> GetWinners()
-        {
-            var winners = new List<(Guid id, string name, string cpf, int votes)>{candidates[0]};
+            var winners = new List<Candidate>{_candidates[0]};
 
-            for (int i = 1; i < candidates.Count; i++)
+            for (int i = 1; i < _candidates.Count; i++)
             {
-                if (candidates[i].votes > winners[0].votes)
+                if (_candidates[i].Votes > winners[0].Votes)
                 {
                     winners.Clear();
-                    winners.Add(candidates[i]);
+                    winners.Add(_candidates[i]);
                 }
-                else if (candidates[i].votes == winners[0].votes)
+                else if (_candidates[i].Votes == winners[0].Votes)
                 {
-                    winners.Add(candidates[i]);
+                    winners.Add(_candidates[i]);
                 }
             }
             return winners;
