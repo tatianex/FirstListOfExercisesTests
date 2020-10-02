@@ -6,6 +6,23 @@ namespace entra21_tests
 {
     public class ElectionTest
     {
+        [Fact]
+        public void should_return_Eduarda_when_created_eduarda_and_Luisa_when_created_luisa()
+        {
+            var election = new Election();
+
+            var eduarda = new Candidate("Eduarda", "854.123.965-74");
+            var luisa = new Candidate("Luisa", "753.951.476-96");           
+            var candidates = new List<Candidate> {eduarda, luisa};
+
+            election.CreateCandidates(candidates, "Pa$$w0rd");
+
+            Assert.Equal("Eduarda", eduarda.Name);
+            Assert.Equal("854.123.965-74", eduarda.Cpf);
+            Assert.Equal("Luisa", luisa.Name);
+            Assert.Equal("753.951.476-96", luisa.Cpf);
+        }
+        
         [Fact] // Test for incorrect password ok
         public void should_not_create_candidates_when_password_is_incorrect()
         {
