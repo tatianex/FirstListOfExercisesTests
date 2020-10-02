@@ -36,7 +36,7 @@ namespace entra21_tests
             var created = election.CreateCandidates(candidates, "incorrect");
 
             // Deve / Asserções
-            Assert.Null(election.Candidates);
+            Assert.Empty(election.Candidates);
             Assert.False(created);
         }
 

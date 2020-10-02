@@ -6,6 +6,10 @@ namespace entra21_tests
 {
     public class Election
     {
+        public Election()
+        {
+            this._candidates = new List<Candidate>();
+        }
         // Esta propriedade tem a sua escrita privada, ou seja, ninguém de fora da classe pode alterar seu valor
         // Propriedade privada SEMPRE em camelcase
         private List<Candidate> _candidates { get; set; }
@@ -17,6 +21,7 @@ namespace entra21_tests
         {
             if (password == "Pa$$w0rd")
             {
+                if (candidates == null) return true;
                 _candidates = candidates;
                 return true;
             }
