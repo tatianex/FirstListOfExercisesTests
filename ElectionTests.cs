@@ -27,8 +27,7 @@ namespace entra21_tests
 
             // OBJETO election
             var election = new Election();
-            (string name, string cpf) candidate = ("José", "879.458.217-53");
-            var candidates = new List<(string name, string cpf) > {candidate};
+            var candidate = new Candidate("José", "879.458.217-53");
 
             // Quando / Ação
 

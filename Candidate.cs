@@ -4,7 +4,7 @@ namespace entra21_tests
 {
     public class Candidate
     {
-        public Guid Id{ get; set; }
+        public Guid Id{ get; private set; }
         public string Name { get; set; }
         public string Cpf { get; set; }
         public int Votes { get; set; }
@@ -13,15 +13,14 @@ namespace entra21_tests
         public Candidate(string name, string cpf)
         {
             Id = Guid.NewGuid();
-            Name = name;
-            Cpf = cpf;
-            Votes = 0;
+            this.Name = name;
+            this.Cpf = cpf;
+            this.Votes = 0;
         }
 
         public void Vote()
         {
             Votes++;
         }
-
     }
 }
