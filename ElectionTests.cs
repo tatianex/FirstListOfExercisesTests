@@ -22,7 +22,7 @@ namespace entra21_tests
             Assert.Equal("Luisa", luisa.Name);
             Assert.Equal("753.951.476-96", luisa.Cpf);
         }
-        
+
         [Fact] // Test for incorrect password ok
         public void should_not_create_candidates_when_password_is_incorrect()
         {
@@ -122,7 +122,6 @@ namespace entra21_tests
             var election = new Election();
             var fernando = new Candidate("Fernando", "954.786.234-96");
             var ana = new Candidate("Ana", "678.951.374-55");
-
             var candidates = new List<Candidate>() { fernando, ana };
             election.CreateCandidates(candidates, "Pa$$w0rd");
             
@@ -137,6 +136,26 @@ namespace entra21_tests
             Assert.True(winners.Count == 1);
             Assert.Equal(ana.Id, winners[0].Id);
             Assert.Equal(2, winners[0].Votes);
+        }
+
+        [Fact]
+        public void should_return_3_votes_for_laura_and_2_votes_for_julia()
+        {
+            var election = new Election();
+            var laura = new Candidate("Laura", "852963741-12");
+            var julia = new Candidate("Julia", "951.753.852-46");
+            var candidates = new List<Candidate> { laura, julia };
+            election.CreateCandidates(candidates, "Pa$$word");
+
+            laura.Vote();
+            laura.Vote();
+            laura.Vote();
+
+            julia.Vote();
+            julia.Vote();
+
+            Assert.Equal(3, laura.Votes);
+            Assert.Equal(2, julia.Votes);
         }
 
         [Fact] // Test for draw ok
