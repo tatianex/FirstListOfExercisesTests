@@ -11,9 +11,7 @@ namespace entra21_tests
         {
             // Dado / Setup
             var election = new Election();
-            var candidates = new List<Candidate>() { 
-                new Candidate("José", "879.458.217-53") 
-            };
+            var candidates = new List<Candidate>() { new Candidate("José", "879.458.217-53") };
 
             // Quando / Ação
             var created = election.CreateCandidates(candidates, "incorrect");
@@ -187,7 +185,9 @@ namespace entra21_tests
             for (int i = 0; i < namesFound.Count; i++)
             {
                 Assert.Equal("Ana", namesFound[i].Name);
-            }                       
+            }
+
+            Assert.Equal(3, namesFound.Count);                       
         }
     }
 }
