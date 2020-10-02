@@ -9,21 +9,23 @@ namespace entra21_tests
         [Fact]
         public void should_return_Eduarda_when_created_eduarda_and_Luisa_when_created_luisa()
         {
+            // Dado / Setup
             var election = new Election();
-
             var eduarda = new Candidate("Eduarda", "854.123.965-74");
             var luisa = new Candidate("Luisa", "753.951.476-96");           
             var candidates = new List<Candidate> {eduarda, luisa};
 
+            // Quando / Ação
             election.CreateCandidates(candidates, "Pa$$w0rd");
 
+            // Deve / Asserções
             Assert.Equal("Eduarda", eduarda.Name);
             Assert.Equal("854.123.965-74", eduarda.Cpf);
             Assert.Equal("Luisa", luisa.Name);
             Assert.Equal("753.951.476-96", luisa.Cpf);
         }
 
-        [Fact] // Test for incorrect password ok
+        [Fact]
         public void should_not_create_candidates_when_password_is_incorrect()
         {
             // Dado / Setup
@@ -38,11 +40,10 @@ namespace entra21_tests
             Assert.False(created);
         }
 
-        [Fact] // Test for correct password ok
+        [Fact]
         public void should_create_candidates_when_password_is_correct()
         {
             // Dado / Setup
-
             // OBJETO election
             var election = new Election();
             var candidates = new List<Candidate>() { 
@@ -50,7 +51,6 @@ namespace entra21_tests
             };
 
             // Quando / Ação
-
             // Estamos acessando o MÉTODO CreateCandidates do OBJETO election
             var created = election.CreateCandidates(candidates, "Pa$$w0rd");
 
@@ -62,7 +62,7 @@ namespace entra21_tests
             Assert.True(election.Candidates.ElementAt(0).Name == candidates.ElementAt(0).Name);
         }
 
-        [Fact] // Test for ids ok
+        [Fact]
         public void should_not_generate_same_id_for_both_candidates()
         {
             // Dado / Setup
@@ -85,7 +85,7 @@ namespace entra21_tests
             Assert.NotEqual(candidateAna, candidateJose);
         }
 
-        [Fact] // Test for vote ok
+        [Fact]
         public void should_vote_twice_in_candidate_Fernando()
         {
             // Dado / Setup
@@ -93,9 +93,9 @@ namespace entra21_tests
 
             var election = new Election();
             var fernando = new Candidate("Fernando", "954.786.234-96");
-            var ana = new Candidate("Ana", "678.951.374-55");
-            
+            var ana = new Candidate("Ana", "678.951.374-55");           
             var candidates = new List<Candidate>() { fernando, ana };
+
             election.CreateCandidates(candidates, "Pa$$w0rd");
 
             var fernandoId = election.GetCandidateIdByName(fernando.Name);
@@ -113,7 +113,7 @@ namespace entra21_tests
             Assert.Equal(0, candidateAna.Votes);
         }
 
-        [Fact] // Test for other votes ok
+        [Fact]
         public void should_return_Ana_as_winner_when_only_Ana_receives_votes()
         {
             // Dado / Setup
@@ -158,7 +158,7 @@ namespace entra21_tests
             Assert.Equal(2, julia.Votes);
         }
 
-        [Fact] // Test for draw ok
+        [Fact]
         public void should_return_both_candidates_when_occurs_draw()
         {
             // Dado / Setup
@@ -172,18 +172,16 @@ namespace entra21_tests
             
             // Quando / Ação
             // Estamos acessando o MÉTODO ShowMenu do OBJETO election
-
             fernando.Vote();
             ana.Vote();
             var winners = election.GetWinners();
 
-            // Deve / Asserções
-           
+            // Deve / Asserções           
             Assert.Equal(1, fernando.Votes);
             Assert.Equal(1, ana.Votes);
         }
     
-        [Fact] // Test for cpf search ok
+        [Fact]
         public void should_return_the_id_of_candidate_when_researched_by_cpf()
         {
             var election = new Election();
@@ -197,15 +195,13 @@ namespace entra21_tests
 
             var IdFound = election.GetCandidateIdByCPF(ana1.Cpf);
 
-            Assert.Equal(ana1.Id, IdFound);
-             
+            Assert.Equal(ana1.Id, IdFound);             
         }
 
-        [Fact] // Test for list of people with same name
+        [Fact]
         public void should_return_a_list_of_candidates_with_same_name()
         {
             var election = new Election();
-
             var Ana1 = new Candidate("Ana", "765.859.452-46");
             var Thiago = new Candidate("Thiago", "764.859.451-45");
             var Ana2 = new Candidate("Ana", "678.951.374-55");
