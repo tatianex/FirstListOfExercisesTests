@@ -13,10 +13,10 @@ namespace entra21_tests
             var election = new Election();
             var eduarda = new Candidate("Eduarda", "854.123.965-74");
             var luisa = new Candidate("Luisa", "753.951.476-96");           
-            var candidates = new List<Candidate> {eduarda, luisa};
+            var candidates = new List<Candidate> { eduarda, luisa };
 
             // Quando / Ação
-            election.CreateCandidates(candidates, "Pa$$w0rd");
+            election.CreateCandidates( candidates, "Pa$$w0rd" );
 
             // Deve / Asserções
             Assert.Equal("Eduarda", eduarda.Name);
@@ -46,9 +46,7 @@ namespace entra21_tests
             // Dado / Setup
             // OBJETO election
             var election = new Election();
-            var candidates = new List<Candidate>() { 
-                new Candidate("José", "879.458.217-53") 
-            };
+            var candidates = new List<Candidate>() { new Candidate("José", "879.458.217-53") };
 
             // Quando / Ação
             // Estamos acessando o MÉTODO CreateCandidates do OBJETO election
@@ -61,6 +59,19 @@ namespace entra21_tests
             Assert.True(election.Candidates.Count == 1);
             Assert.True(election.Candidates.ElementAt(0).Name == candidates.ElementAt(0).Name);
         }
+
+        [Fact]
+        public void should_return()
+        {
+            var election = new Election();
+            var nullCandidate = new Candidate(null, null);
+            var candidate = new List<Candidate> { nullCandidate };
+
+            election.CreateCandidates(candidate, "Pa$$w0rd");
+
+            Assert.Equal(null, nullCandidate.Name);
+            Assert.Equal(null, nullCandidate.Cpf);
+        }      
 
         [Fact]
         public void should_not_generate_same_id_for_both_candidates()
@@ -209,7 +220,7 @@ namespace entra21_tests
             var Ana3 = new Candidate("Ana", "597.841.198-35");
             var Jose = new Candidate("Maria", "577.842.198-25");
             
-            var candidates = new List<Candidate> {Ana1, Ana2, Ana3, Thiago, Paula, Jose};
+            var candidates = new List<Candidate> { Ana1, Ana2, Ana3, Thiago, Paula, Jose };
             election.CreateCandidates(candidates, "Pa$$w0rd");
 
             var namesFound = election.GetCandidatesByName("Ana");
