@@ -61,16 +61,10 @@ namespace entra21_tests
         }
 
         [Fact]
-        public void should_return()
+        public void should_not_return_null_list()
         {
             var election = new Election();
-            var nullCandidate = new Candidate(null, null);
-            var candidate = new List<Candidate> { nullCandidate };
-
-            election.CreateCandidates(candidate, "Pa$$w0rd");
-
-            Assert.Equal(null, nullCandidate.Name);
-            Assert.Equal(null, nullCandidate.Cpf);
+            Assert.NotNull(election.Candidates);
         }      
 
         [Fact]
