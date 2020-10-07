@@ -359,6 +359,5 @@ namespace entra21_tests
 
             Assert.Equal(expected, result);
         }
-
     }
 }

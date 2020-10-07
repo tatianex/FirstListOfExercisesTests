@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace Domain
 {
-    class Exercises
+    public class Exercises
     {
         // Dado que a aplicação está preparada. Quando o usuário chamar o exercício 1A,
         // então a aplicação deverá retornar todos os números de 1 a 10 de forma crescente
