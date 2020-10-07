@@ -1,4 +1,4 @@
-namespace entra21_tests
+namespace Domain
 {
     class Calculator
     {

@@ -1,5 +1,5 @@
-using Domain;
 using Xunit;
+using Domain;
 
 namespace entra21_tests
 {
