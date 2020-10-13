@@ -21,9 +21,9 @@ namespace entra21_tests
 
             // Deve / Asserções
             Assert.Equal("Eduarda", eduarda.Name);
-            Assert.Equal("854.123.965-74", eduarda.Cpf);
+            Assert.Equal("854.123.965-74", eduarda.CPF);
             Assert.Equal("Luisa", luisa.Name);
-            Assert.Equal("753.951.476-96", luisa.Cpf);
+            Assert.Equal("753.951.476-96", luisa.CPF);
         }
 
         [Fact]
@@ -199,7 +199,7 @@ namespace entra21_tests
             var candidates = new List<Candidate>() { ana1, ana2, ana3 };
             election.CreateCandidates(candidates, "Pa$$w0rd");
 
-            var IdFound = election.GetCandidateIdByCPF(ana1.Cpf);
+            var IdFound = election.GetCandidateIdByCPF(ana1.CPF);
 
             Assert.Equal(ana1.Id, IdFound);             
         }

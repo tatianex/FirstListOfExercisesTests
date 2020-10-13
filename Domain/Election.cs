@@ -8,7 +8,7 @@ namespace Domain
     {
         public Election()
         {
-            this._candidates = new List<Candidate>();
+            _candidates = new List<Candidate>();
         }
         // Esta propriedade tem a sua escrita privada, ou seja, ninguém de fora da classe pode alterar seu valor
         // Propriedade privada SEMPRE em camelcase
@@ -42,7 +42,7 @@ namespace Domain
         // ToDo: Criar método que retorne um Guid que represente o candidato pesquisado por CPF
         public Guid GetCandidateIdByCPF(string cpf)
         {
-            return _candidates.Find(x => x.Cpf == cpf).Id;
+            return _candidates.Find(x => x.CPF == cpf).Id;
         }
         
         public List<Candidate> GetWinners()
