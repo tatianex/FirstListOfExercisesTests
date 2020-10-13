@@ -24,22 +24,17 @@ namespace Domain
 
         public bool Validate()
         {
-            if (string.IsNullOrEmpty(CPF))
-            {
-                return false;
-            }
+            if (string.IsNullOrEmpty(CPF)) return false;
 
             var cpf = CPF.Replace(".", "").Replace("-", "");
             
-            if (cpf.Length != 11) return false;
-            
+            if (cpf.Length != 11) return false;            
 
             if (!cpf.All(char.IsNumber)) return false;
             
             var first = cpf[0];
             if (cpf.Substring(1, 10).All(x => x == first)) return false;
             
-
             int[] multiplier1 = new int[9] { 10, 9, 8, 7, 6, 5, 4, 3, 2 };
             int[] multiplier2 = new int[10] { 11, 10, 9, 8, 7, 6, 5, 4, 3, 2 };
 
