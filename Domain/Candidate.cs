@@ -11,6 +11,12 @@ namespace Domain
         public string CPF { get; private set; }
         public int Votes { get; private set; } = 0;
 
+        public Candidate(string name, string cpf)
+        {
+            Name = name;
+            CPF = cpf;
+        }
+
         private bool ValidateCPF()
         {
             if (string.IsNullOrEmpty(CPF)) return false;
@@ -80,12 +86,6 @@ namespace Domain
             }
 
             return true;
-        }
-
-        public Candidate(string name, string cpf)
-        {
-            Name = name;
-            CPF = cpf;
         }
 
         public void Vote()
